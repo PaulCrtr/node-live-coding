@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const wilderControllers = require("./controllers/wilders");
+
+app.use(express.json());
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/wilderdb", {
@@ -13,6 +14,9 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch((err) => console.log(err));
 
-app.post("/", wilderControllers.create);
+mongoose.set("useFindAndModify", false);
+
+const wildersRouter = require("./routers/wildersRouter");
+app.use("/api/wilders", wildersRouter);
 
 app.listen(3000, () => console.log("Server started on 3000"));
