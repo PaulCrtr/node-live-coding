@@ -3,7 +3,7 @@ const wilderControllers = require("../controllers/wilders");
 
 wildersRouter.post("/", wilderControllers.create);
 wildersRouter.get("/", wilderControllers.getAll);
-wildersRouter.put("/:name", wilderControllers.update);
-wildersRouter.delete("/:name", wilderControllers.delete);
+wildersRouter.put("/:id", wilderControllers.update);
+wildersRouter.delete("/:id", wilderControllers.delete);
 
 module.exports = wildersRouter;
