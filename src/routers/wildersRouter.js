@@ -1,9 +1,10 @@
 const wildersRouter = require("express").Router();
 const wilderControllers = require("../controllers/wilders");
+const errorHandler = require("../utils/errorHandler");
 
-wildersRouter.post("/", wilderControllers.create);
-wildersRouter.get("/", wilderControllers.getAll);
-wildersRouter.put("/:id", wilderControllers.update);
-wildersRouter.delete("/:id", wilderControllers.delete);
+wildersRouter.post("/", errorHandler(wilderControllers.create));
+wildersRouter.get("/", errorHandler(wilderControllers.getAll));
+wildersRouter.put("/:id", errorHandler(wilderControllers.update));
+wildersRouter.delete("/:id", errorHandler(wilderControllers.delete));
 
 module.exports = wildersRouter;
