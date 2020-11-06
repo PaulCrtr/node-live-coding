@@ -4,6 +4,12 @@ const app = express();
 
 app.use(express.json());
 
+// Routes
+const wildersRoutes = require("./routes/wildersRoutes");
+
+app.use("/api/wilders", wildersRoutes);
+// ------
+
 mongoose
   .connect("mongodb://127.0.0.1:27017/wilderdb", {
     useNewUrlParser: true,
@@ -16,7 +22,4 @@ mongoose
 
 mongoose.set("useFindAndModify", false);
 
-const wildersRouter = require("./routers/wildersRouter");
-app.use("/api/wilders", wildersRouter);
-
-app.listen(3000, () => console.log("Server started on 3000"));
+app.listen(5000, () => console.log("Server started on 5000"));
